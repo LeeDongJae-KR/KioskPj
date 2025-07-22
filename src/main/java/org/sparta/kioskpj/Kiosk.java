@@ -6,44 +6,47 @@ import java.util.Scanner;
 public class Kiosk {
 
     int selectNum;
+    List<Menu> menuCategryList;
 
-    Scanner scanner = new Scanner(System.in);
-    // 메뉴 아이템을 관리하는 필드
-    List<MenuItem> menuList;
-
-    Kiosk(List<MenuItem> menuList) {
-        this.menuList = menuList;
+    Kiosk(List<Menu> menuCategryList) {
+        this.menuCategryList = menuCategryList;
     }
 
     // 반복문 로직
-    public void start(){
-        // 반복문을 활용해 List 안에 있는 MenuItem을 하나씩 출력
-        for (int i = 0; i < menuList.size(); i++) {
-            System.out.println((i + 1) + ". " + menuList.get(i));
-        }
+    public void start() {
+        // Scanner 선언
+        Scanner scanner = new Scanner(System.in);
         //입력 값에 따른 출력
         while (true) {
-            System.out.print("메뉴 번호를 선택해 주세요 : ");
-            selectNum = scanner.nextInt();
-            switch (selectNum) {
-                case 1:
-                    System.out.println("ShackBurger 주문이 완료 되었습니다 감사합니다.");
-                    break;
-                case 2:
-                    System.out.println("SmokeShack 주문이 완료 되었습니다 감사합니다.");
-                    break;
-                case 3:
-                    System.out.println("Cheeseburger 주문이 완료 되었습니다 감사합니다.");
-                    break;
-                case 4:
-                    System.out.println("Hamburger  주문이 완료 되었습니다 감사합니다.");
-                    break;
+            // List와 Menu 클래스 활용하여 상위 카테고리 메뉴 출력
+            System.out.println(" [ MAIN MENU ] ");
+            for (int i = 0; i < menuCategryList.size(); i++) {
+                System.out.println((i + 1) + ". " + menuCategryList.get(i).category);
             }
-            //특정 번호 입력시 반복문 종료
-            System.out.print("0을 입력하시면 종료 됩니다 추가 주문을 원하시면 0을 제외한 다른 키를 입력하세요 : ");
-            if (scanner.nextInt() == 0) break;
+            System.out.println("0. 종료");
+
+            // 숫자 입력 받기
+            System.out.print("번호를 선택해 주세요 : ");
+            selectNum = scanner.nextInt();
+
+            // 입력 빋은 숫자에 해당하는 MenuItem 출력
+            if (selectNum == 0) {
+                System.out.println("주문이 종료 되었습니다.");
+                break;
+            } else {
+                menuCategryList.get(selectNum - 1).printMenuItem();
+            }
+
+            // 숫자 입력 받기
+            System.out.print("번호를 선택해 주세요 : ");
+            selectNum = scanner.nextInt();
+
+            // 입력 받은 숫자에 해당하는 메뉴 출력
+            if (selectNum == 0) {
+            } else {
+                System.out.println("선택한 메뉴 : " + menuCategryList.get(selectNum - 1).returnMenuList().get(selectNum - 1));
+            }
         }
-        System.out.println("선택한 메뉴 : " + menuList.get(selectNum - 1));
         scanner.close();
     }
 }
