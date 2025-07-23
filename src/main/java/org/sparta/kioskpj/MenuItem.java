@@ -1,9 +1,10 @@
 package org.sparta.kioskpj;
 
 public class MenuItem {
-    String name;
-    Double price;
-    String description;
+    //캡슐화 적용
+    private String name;
+    private Double price;
+    private String description;
 
     public MenuItem(String name, Double price, String description) {
         this.name = name;

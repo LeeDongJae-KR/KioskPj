@@ -1,13 +1,18 @@
 package org.sparta.kioskpj;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+
 public class Menu {
+    //캡슐화 적용
     //List 선언
-    List<MenuItem> menuList;
+    private List<MenuItem> menuList;
     //Category 필드 선언
-    String category;
+    private String category;
 
     public Menu(String category) {
         this.category = category;

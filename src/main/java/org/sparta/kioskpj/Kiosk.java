@@ -4,24 +4,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Kiosk {
-
-    int selectNum;
-    List<Menu> menuCategryList;
+    //캡슐화 적용
+    private List<Menu> menuCategryList;
 
     Kiosk(List<Menu> menuCategryList) {
         this.menuCategryList = menuCategryList;
     }
 
     // 반복문 로직
-    public void start() {
+    public void start() throws IndexOutOfBoundsException {
         // Scanner 선언
         Scanner scanner = new Scanner(System.in);
         //입력 값에 따른 출력
         while (true) {
+            int selectNum;
             // List와 Menu 클래스 활용하여 상위 카테고리 메뉴 출력
             System.out.println(" [ MAIN MENU ] ");
             for (int i = 0; i < menuCategryList.size(); i++) {
-                System.out.println((i + 1) + ". " + menuCategryList.get(i).category);
+                System.out.println((i + 1) + ". " + menuCategryList.get(i).getCategory());
             }
             System.out.println("0. 종료");
 
@@ -42,8 +42,7 @@ public class Kiosk {
             selectNum = scanner.nextInt();
 
             // 입력 받은 숫자에 해당하는 메뉴 출력
-            if (selectNum == 0) {
-            } else {
+            if (selectNum != 0) {
                 System.out.println("선택한 메뉴 : " + menuCategryList.get(selectNum - 1).returnMenuList().get(selectNum - 1));
             }
         }
