@@ -24,21 +24,25 @@ public class Main {
         desserts.getMenuList().add(new MenuItem("Cheese Stick", 2.0, "치즈 스틱"));
         desserts.getMenuList().add(new MenuItem("Nuggets", 3.5, "치킨 너겟"));
 
+        Menu orders = new Menu("Orders");
+        orders.getMenuList().add(new MenuItem("Orders", "장바구니를 확인 후 주문 합니다."));
+
         // 카테고리 리스트 생성 및 Menu 객체 삽입
-        List<Menu> menuCategryList = new ArrayList<>();
-        menuCategryList.add(burgers);
-        menuCategryList.add(drinks);
-        menuCategryList.add(desserts);
+        List<Menu> menuCategoryList = new ArrayList<>();
+        menuCategoryList.add(burgers);
+        menuCategoryList.add(drinks);
+        menuCategoryList.add(desserts);
+        menuCategoryList.add(orders);
 
         // Kiosk 객체 생성
-        Kiosk kiosk = new Kiosk(menuCategryList);
+        Kiosk kiosk = new Kiosk(menuCategoryList);
         // Kiosk 시작
         while (true) {
             try {
                 kiosk.start();
                 break;
             } catch (Exception e) {
-                System.out.println("올바른 숫자를 입력하세요");
+                System.out.println("잘못된 값을 입력하여 초기화 되었습니다.");
             }
         }
     }

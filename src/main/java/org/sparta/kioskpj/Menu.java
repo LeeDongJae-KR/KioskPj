@@ -28,9 +28,4 @@ public class Menu {
         System.out.println("0. 종료");
     }
 
-    // List를 리턴하는 함수
-    public List<MenuItem> returnMenuList(){
-        return menuList;
-    }
-
 }
