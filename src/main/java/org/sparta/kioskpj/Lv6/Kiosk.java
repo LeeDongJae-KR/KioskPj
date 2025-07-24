@@ -1,4 +1,4 @@
-package org.sparta.kioskpj;
+package org.sparta.kioskpj.Lv6;
 
 import java.util.List;
 import java.util.Scanner;

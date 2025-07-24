@@ -1,4 +1,4 @@
-package org.sparta.kioskpj;
+package org.sparta.kioskpj.Lv6;
 
 public interface ShoppingCart {
     void addMenu(MenuItem menuItem); // 사용자가 선택한 메뉴를 장바구니에 추가할 수 있는 기능
