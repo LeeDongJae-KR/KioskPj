@@ -1,0 +1,76 @@
+name: 👀 코드 리뷰 요청
+description: 특정 코드나 구현에 대한 팀원들의 리뷰를 요청합니다
+title: "[REVIEW] "
+labels: ["review-request", "needs-feedback"]
+body:
+  - type: dropdown
+    id: review_type
+    attributes:
+      label: 리뷰 유형
+      options:
+        - 🏗️ 아키텍처/설계 검토
+        - 💻 코드 품질 검토
+        - 🔒 보안 검토
+        - ⚡ 성능 최적화 검토
+        - 🎨 UI/UX 검토
+        - 📝 문서 검토
+      default: 1
+    validations:
+      required: true
+
+  - type: input
+    id: pr_link
+    attributes:
+      label: Pull Request 링크 (선택사항)
+      description: 관련된 PR이 있다면 링크를 첨부해주세요
+      placeholder: https://github.com/username/repo/pull/123
+
+  - type: textarea
+    id: review_scope
+    attributes:
+      label: 리뷰 범위
+      description: 어떤 파일이나 기능에 대한 리뷰를 원하시나요?
+      placeholder: |
+        예시:
+        - src/components/LoginForm.tsx
+        - API 라우터 설계 (routes/auth.js)
+        - 데이터베이스 스키마 (models/User.js)
+    validations:
+      required: true
+
+  - type: textarea
+    id: specific_concerns
+    attributes:
+      label: 특별히 검토받고 싶은 부분
+      description: 어떤 부분에 대해 피드백을 받고 싶으신가요?
+      placeholder: |
+        예시:
+        - 컴포넌트 구조가 적절한지
+        - 에러 처리가 충분한지
+        - 성능상 문제는 없는지
+        - 보안 취약점은 없는지
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 리뷰 긴급도
+      options:
+        - 🔴 긴급 - 오늘 내 필요
+        - 🟠 높음 - 2-3일 내 필요
+        - 🟡 보통 - 일주일 내 필요
+        - 🟢 낮음 - 여유 있을 때
+      default: 2
+
+  - type: checkboxes
+    id: reviewers
+    attributes:
+      label: 리뷰어 요청
+      description: 누구의 리뷰를 받고 싶으신가요?
+      options:
+        - label: 팀 리더
+        - label: 프론트엔드 개발자
+        - label: 백엔드 개발자
+        - label: 시니어 개발자
+        - label: 전체 팀원

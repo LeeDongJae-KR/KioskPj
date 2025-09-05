@@ -1,0 +1,128 @@
+name: 📋 작업 할당
+description: 새로운 작업을 생성하고 팀원에게 할당합니다
+title: "[TASK] "
+labels: ["task", "needs-assignment"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 새로운 작업 생성
+        팀원들과 협업을 위해 아래 정보를 상세히 작성해주세요.
+
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: 작업 유형
+      description: 어떤 종류의 작업인가요?
+      options:
+        - 🎨 프론트엔드 - UI/UX 구현
+        - ⚙️ 백엔드 - API/서버 로직
+        - 🗄️ 데이터베이스 - DB 설계/쿼리
+        - 🧪 테스트 - 단위/통합 테스트
+        - 📚 문서화 - README/API 문서
+        - 🐛 버그 수정 - 오류 해결
+        - 🔧 환경 설정 - 빌드/배포 설정
+        - 🔍 리서치 - 기술 조사/분석
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 우선순위
+      description: 이 작업의 중요도와 긴급도는?
+      options:
+        - 🔴 긴급 (당일 처리 필요)
+        - 🟠 높음 (이번 주 내 완료)
+        - 🟡 보통 (다음 스프린트까지)
+        - 🟢 낮음 (여유 있을 때)
+      default: 2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: estimated_time
+    attributes:
+      label: 예상 소요 시간
+      description: 이 작업 완료까지 예상 시간은?
+      options:
+        - 1-2시간
+        - 반나절 (4시간)
+        - 1일
+        - 2-3일
+        - 1주일
+        - 1주일 이상
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 작업 설명
+      description: 무엇을 해야 하는지 구체적으로 설명해주세요
+      placeholder: |
+        예시:
+        - 사용자 로그인 페이지 UI 구현
+        - JWT 토큰 기반 인증 API 개발
+        - 회원가입 폼 validation 추가
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: 완료 조건 (Acceptance Criteria)
+      description: 이 작업이 완료되었다고 판단할 수 있는 기준
+      placeholder: |
+        예시:
+        - [ ] 로그인 폼이 반응형으로 동작함
+        - [ ] 잘못된 입력 시 에러 메시지 표시
+        - [ ] 성공 시 메인 페이지로 리다이렉트
+        - [ ] 단위 테스트 작성 완료
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 의존성
+      description: 이 작업을 시작하기 전에 완료되어야 할 다른 작업이나 조건
+      placeholder: |
+        예시:
+        - #123 데이터베이스 스키마 설계 완료 후 진행 가능
+        - 디자인 시스템 컴포넌트 라이브러리 설치 필요
+
+  - type: textarea
+    id: technical_notes
+    attributes:
+      label: 기술적 참고사항
+      description: 구현 시 참고할 기술 스택, 라이브러리, 방법론 등
+      placeholder: |
+        예시:
+        - React Hook Form 사용
+        - Tailwind CSS로 스타일링
+        - Jest + Testing Library로 테스트 작성
+
+  - type: checkboxes
+    id: definition_of_done
+    attributes:
+      label: Definition of Done
+      description: 팀에서 정한 완료 기준을 확인해주세요
+      options:
+        - label: 코드 리뷰 완료
+          required: false
+        - label: 테스트 케이스 작성 및 통과
+          required: false
+        - label: 문서 업데이트 완료
+          required: false
+        - label: 브랜치 정리 (merge/delete)
+          required: false
+        - label: 팀원들에게 완료 공유
+          required: false
